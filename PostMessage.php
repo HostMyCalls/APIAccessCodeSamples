@@ -7,6 +7,8 @@ $password = 'password';
 $from = '+17708002476';
 $to = '+10000000000';
 $message = 'Test message from PHP page';
+$url = 'http://sms.hostmycalls.com:3333/Messages';
+
 
 $oidc = new OpenIDConnectClient('https://hmcopenidserver.azurewebsites.net', $user,$password );
 
@@ -15,7 +17,7 @@ $oidc->addScope('api1'); // name of api -> change it according to the API access
 
 $clientCredentialsToken = $oidc->requestClientCredentialsToken()->access_token;
 
-$url = 'http://localhost:5001/Messages';
+
 $authorization = "Authorization: Bearer "; 
 $authorization .= $clientCredentialsToken;
 $ch = curl_init($url);
