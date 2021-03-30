@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script src="hmc-webphone-library.js"></script>
+
+    <style>
+      .main {
+        height: 100%;
+      }
+
+      .bordered {
+        border: solid 1px;
+      }
+
+      .WebPhone {
+        height: 50%;
+        width: 20%;
+        float: right;
+        margin-top: 20%;
+      }
+
+      body {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main bordered">
+      <div id="NumbersContainer" class="">
+          <select id="NumberList">
+            <option value="1017">1017</option>
+            <option value="1071">1071</option>
+            <option value="1072">1072</option>
+            <option value="1073">1073</option>
+            <option value="1074">1074</option>            
+          </select>
+      </div>
+      <button id="CallButton" onclick="InitiateCall()">Call</button>
+      <div id="WebPhone" class="WebPhone bordered"></div>
+    </div>
+
+    <script>
+      var options = {
+        /* */ 
+        sbcServer: "waccept-webrtc.hostmycalls.com",
+        /* login details below */
+        loginId: "",
+        passWord: "",
+        phoneId: ""
+        
+      };
+
+      var webPhone = new HMCWebPhone(options);
+      webPhone.Load();
+
+      function InitiateCall()
+      {
+        var e = document.getElementById("NumberList");
+        webPhone.CallNumber(e.value);
+      }
+      
+    </script>
+  </body>
+</html>
