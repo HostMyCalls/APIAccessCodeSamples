@@ -1,6 +1,8 @@
 <html>
   <head>
-    <script src="hmc-webphone-library.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://pinger.hostmycalls.com/wp/hmc-webphone-library.js"></script>
+    
 
     <style>
       .main {
@@ -28,38 +30,37 @@
   <body>
     <div class="main bordered">
       <div id="NumbersContainer" class="">
-          <select id="NumberList">
-            <option value="1017">1017</option>
-            <option value="1071">1071</option>
-            <option value="1072">1072</option>
-            <option value="1073">1073</option>
-            <option value="1074">1074</option>            
-          </select>
+        <select id="NumberList">
+          <option value="1017">1017</option>
+          <option value="1071">1071</option>
+          <option value="1072">1072</option>
+          <option value="1073">1073</option>
+          <option value="1074">1074</option>
+        </select>
       </div>
-      <button id="CallButton" onclick="InitiateCall()">Call</button>
+      <button id="CallButton" onclick="initiateCall()">Call</button>
       <div id="WebPhone" class="WebPhone bordered"></div>
     </div>
 
     <script>
       var options = {
-        /* */ 
-        sbcServer: "waccept-webrtc.hostmycalls.com",
+        /* */
+        sbcServer: '',
         /* login details below */
-        loginId: "",
-        passWord: "",
-        phoneId: ""
-        
+        loginId: '',
+        passWord: '',
+        phoneId: 'WebPhone',
       };
+      console.log('options test:', options);
 
       var webPhone = new HMCWebPhone(options);
       webPhone.Load();
 
-      function InitiateCall()
-      {
-        var e = document.getElementById("NumberList");
+      function initiateCall() {
+        var e = document.getElementById('NumberList');
+        console.log('initiateCall number: ', e.value);
         webPhone.CallNumber(e.value);
       }
-      
     </script>
   </body>
 </html>
